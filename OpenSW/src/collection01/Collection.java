@@ -16,6 +16,9 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.jsoup.Jsoup;
+import org.snu.ids.kkma.index.Keyword;
+import org.snu.ids.kkma.index.KeywordExtractor;
+import org.snu.ids.kkma.index.KeywordList;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -49,9 +52,17 @@ public class Collection {
 				title.appendChild(document.createTextNode(titleData));
 				doc.appendChild(title);                //title element가 doc에 있다.
 				
-				Element body = document.createElement("body");
-				body.appendChild(document.createTextNode(bodyData));
+				Element body = document.createElement("body");			
+				KeywordExtractor ke = new KeywordExtractor();      //kkma 형태소 분석기 사용
+				KeywordList kl = ke.extractKeyword(bodyData, true);
+				
+				for(int j=0; j<kl.size(); j++) {
+					Keyword kwrd = kl.get(j);
+					body.appendChild(document.createTextNode(kwrd.getString()+":"+kwrd.getCnt()+"#"));
+				}
+				
 				doc.appendChild(body);                 //body element가 doc에 있다.
+				
 			}
 			
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -60,7 +71,7 @@ public class Collection {
 			transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");  //인코딩 타입은 UTF-8
 			
 			DOMSource source = new DOMSource(document);
-			StreamResult result = new StreamResult(new FileOutputStream(new File("collection.xml")));
+			StreamResult result = new StreamResult(new FileOutputStream(new File("index.xml")));
 			
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");   //들여쓰기
 			transformer.transform(source, result);
