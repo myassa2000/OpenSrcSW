@@ -134,7 +134,7 @@ public class indexer {
 		objectOutputStream.writeObject(weightMap);
 		objectOutputStream.close();
 
-		// hashMap을 읽어온다.
+		// hashMap을 읽어서 확인한다.
 		FileInputStream fin = new FileInputStream(output_file);
 		ObjectInputStream objectInputStream = new ObjectInputStream(fin);
 
