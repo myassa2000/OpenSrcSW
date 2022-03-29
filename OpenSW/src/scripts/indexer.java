@@ -3,7 +3,8 @@ package scripts;
 /**
  * 4주차 과제
  * index.xml을 불러와 keyword들의 가중치(weight=TF*IDF)를 구해 hashMap에 저장.
- * index.post를 생성한다.
+ * input : index.xml
+ * output : index.post
  */
 
 import java.io.File;
