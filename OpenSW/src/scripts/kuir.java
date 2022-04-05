@@ -9,6 +9,8 @@ public class kuir {
 	public static void main(String[] args) throws TransformerException, IOException, ClassNotFoundException {
 		String command = args[0];   
 		String path = args[1];
+		String q = args[2];
+		String qWord = args[3];
 
 		if(command.equals("-c")) {
 			makeCollection collection = new makeCollection(path);
@@ -18,6 +20,9 @@ public class kuir {
 		}
 		else if(command.equals("-i")) {
 			indexer weight = new indexer(path);
+		}
+		else if(command.equals("-s")) {
+			searcher search = new searcher(path, q, qWord);
 		}
 
 	}
