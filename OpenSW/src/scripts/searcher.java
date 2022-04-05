@@ -117,14 +117,14 @@ public class searcher {
 		if (firstIdx == -1)
 			System.out.println("유사한 문서가 없습니다.");
 		else if (secondIdx == -1)
-			System.out.println("1위 : " + title[firstIdx]);
+			System.out.println("1위 : " + title[firstIdx] + "(유사도 : " + result[firstIdx] + ")");
 		else if (thirdIdx == -1) {
-			System.out.println("1위 : " + title[firstIdx]);
-			System.out.println("2위 : " + title[secondIdx]);
+			System.out.println("1위 : " + title[firstIdx] + "(유사도 : " + result[firstIdx] + ")");
+			System.out.println("2위 : " + title[secondIdx] + "(유사도 : " + result[secondIdx] + ")");
 		} else {
-			System.out.println("1위 : " + title[firstIdx]);
-			System.out.println("2위 : " + title[secondIdx]);
-			System.out.println("3위 : " + title[thirdIdx]);
+			System.out.println("1위 : " + title[firstIdx] + "(유사도 : " + result[firstIdx] + ")");
+			System.out.println("2위 : " + title[secondIdx] + "(유사도 : " + result[secondIdx] + ")");
+			System.out.println("3위 : " + title[thirdIdx] + "(유사도 : " + result[thirdIdx] + ")");
 		}
 	}
 
