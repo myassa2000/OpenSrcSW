@@ -70,7 +70,8 @@ public class searcher {
 		}
 
 		// CalcSim 함수로 유사도를 계산하고 순위를 매긴다. 유사도가 0인 것은 제외하고 유사도가 같은 경우 id가 클수록 순위가 낮다.
-		double[] result = tmp(query, TF, keyList, valueList);
+		double[] result = CalcSim(query, TF, keyList, valueList);
+
 		int[] rank = { 1, 1, 1, 1, 1 };
 		for (int i = 0; i < 5; i++) {
 			if (result[i] == 0.0) {
@@ -112,8 +113,7 @@ public class searcher {
 			Integer id = i;
 			title[i] = html.getElementById(id.toString()).getElementsByTag("title").text();
 		}
-
-		// 유사도 1~3위를 출력한다.
+		
 		if (firstIdx == -1)
 			System.out.println("유사한 문서가 없습니다.");
 		else if (secondIdx == -1)
@@ -128,8 +128,8 @@ public class searcher {
 		}
 	}
 
-	// 코사인 유사도 계산 함수. 5개 문서와의 유사도를 scale에 담아 반환한다.
-	public double[] tmp(String[] query, int[] TF, List<String> keyList, List<String> valueList) {
+	// 코사인 유사도 계산 함수. 5개 문서와의 유사도를 result에 담아 반환한다.
+	public double[] CalcSim(String[] query, int[] TF, List<String> keyList, List<String> valueList) {
 		double[] result = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0 };
 		for (int i = 0; i < keyList.size(); i++) {
 			for (int j = 0; j < query.length; j++) {
@@ -192,4 +192,5 @@ public class searcher {
 
 		return scale;
 	}
+
 }
