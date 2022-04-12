@@ -114,7 +114,7 @@ public class searcher {
 			title[i] = html.getElementById(id.toString()).getElementsByTag("title").text();
 		}
 
-		// 유사도 1~3위를 출력한다.
+		// 유사도 1~3위를 출력한다. 
 		if (firstIdx == -1)
 			System.out.println("유사한 문서가 없습니다.");
 		else if (secondIdx == -1)
