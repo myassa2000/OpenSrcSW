@@ -71,6 +71,7 @@ public class searcher {
 
 		// CalcSim 함수로 유사도를 계산하고 순위를 매긴다. 유사도가 0인 것은 제외하고 유사도가 같은 경우 id가 클수록 순위가 낮다.
 		double[] result = CalcSim(query, TF, keyList, valueList);
+
 		int[] rank = { 1, 1, 1, 1, 1 };
 		for (int i = 0; i < 5; i++) {
 			if (result[i] == 0.0) {
