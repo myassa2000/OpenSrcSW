@@ -24,6 +24,9 @@ public class kuir {
 		else if(command.equals("-s")) {
 			searcher search = new searcher(path, q, qWord);
 		}
+		else if(command.equals("-m")) {
+			MidTerm midterm = new MidTerm(path, q, qWord);
+		}
 
 	}
 
